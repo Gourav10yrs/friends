@@ -1,0 +1,20 @@
+<h2>Listing all the Articles</h2>
+<p><%= link_to 'Create New Articles', new_article_path %></p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Title</th>
+            <th>Descriptions</th>
+        </tr>
+        <% @articles.each do |article|%>
+            <tr>
+                <td><%= article.title %></td>
+                <td><%= article.description %></td>
+                <%# we are passing individual article to the path as that path require id %>
+                <td><%= link_to 'Edit',  edit_article_path(article) %></td>
+                <td><%= link_to 'show', article_path(article) %></td>
+            </tr>
+        <%end%>
+    </tbody>
+</table>
