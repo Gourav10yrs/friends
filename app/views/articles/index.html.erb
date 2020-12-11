@@ -14,6 +14,7 @@
                 <%# we are passing individual article to the path as that path require id %>
                 <td><%= link_to 'Edit',  edit_article_path(article) %></td>
                 <td><%= link_to 'show', article_path(article) %></td>
+                <td><%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are You Sure?"} %></td>
             </tr>
         <%end%>
     </tbody>
