@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    before_action :set_article, only: [:edit, :show, :update, :destroy]
 
     def index
         @articles = Article.all
@@ -23,15 +24,12 @@ class ArticlesController < ApplicationController
     end
 
     def show
-        @article = Article.find(params[:id])
     end
 
     def edit
-        @article = Article.find(params[:id])
     end
 
     def update
-        @article = Article.find(params[:id])
         if @article.update(article_params)
             flash[:notice] = "Article was Successfully Updated"
             redirect_to article_path(@article)
@@ -41,13 +39,16 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
         flash[:notice] = "Article was Successfully Deleted"
         redirect_to articles_path
     end
     
   private
+    def set_article
+        @article = Article.find(params[:id])
+    end
+
   # We are whitelisting the data that are comming from params.
     def article_params
         params.require(:article).permit(:title, :description)
