@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+
+    #before_action is used because to remove redundancy in the code and only is used so only that method can use this private method 
+    
     before_action :set_article, only: [:edit, :show, :update, :destroy]
 
     def index
@@ -49,7 +52,7 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
 
-  # We are whitelisting the data that are comming from params.
+  # We are whitelisting the data that are comming from paramsf.
     def article_params
         params.require(:article).permit(:title, :description)
     end
