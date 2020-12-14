@@ -1,20 +1,27 @@
 <h2>Listing all the Articles</h2>
-<p><%= link_to 'Create New Articles', new_article_path %></p>
+<p><%= link_to 'Create New Articles', new_article_path, class: 'btn btn-primary'%></p>
 
-<table>
+<table class="table">
     <tbody>
         <tr>
             <th>Title</th>
             <th>Descriptions</th>
+            <th>Created By</th>
+            <th>Edit</th>
+            <th>Show</th>
+            <th>Delete</th>
+            <th>Last Updated</th>
         </tr>
         <% @articles.each do |article|%>
             <tr>
                 <td><%= article.title %></td>
                 <td><%= article.description %></td>
+                <td><%= article.user.username if article.user %></td>
                 <%# we are passing individual article to the path as that path require id %>
                 <td><%= link_to 'Edit',  edit_article_path(article) %></td>
                 <td><%= link_to 'show', article_path(article) %></td>
                 <td><%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are You Sure?"} %></td>
+                <td><%= time_ago_in_words(article.updated_at) %></td>
             </tr>
         <%end%>
     </tbody>
