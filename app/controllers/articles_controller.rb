@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
     def create
         # we pass article_params to whitelist the parameter
         @article = Article.new(article_params)
+        @article.user = User.first
         if @article.save
             #to show message that article was created
             flash[:notice] = "Article was Successfully Created"
