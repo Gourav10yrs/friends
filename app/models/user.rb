@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
                 uniqueness: { case_sensitive: false }, 
                 length: { minimum: 3 },
                 format: { with: VALID_EMAIL_REGEX }
+    # this used because we want to add hash password and add salt to it.  
+    has_secure_password
 end
