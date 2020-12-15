@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   root to: 'welcome#home'
   get 'about',  to: 'welcome#about'
 
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+
   resources :articles
 end
