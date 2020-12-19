@@ -1,0 +1,18 @@
+<h1>All Alpha Bloggers</h1>
+<div> 
+    <% @users.each do |user| %>
+        <div class="card p-2 my-2">
+            <div class="row">
+                <div class="well col-md-2">
+                    <div><%= link_to gravatar_for(user), user_path(user) %></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="article-title">
+                        <%= link_to user.username, user_path(user) %>
+                    </div>
+                    <div><small><%= pluralize(user.articles.count, "article") if user.articles %></small></div>
+                </div>                
+            </div>  
+        </div>
+    <% end %>
+</div>
