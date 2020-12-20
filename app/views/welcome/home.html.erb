@@ -2,6 +2,8 @@
   <h1 class="display-4">Wellcome to Gourav Blog</h1>
   <hr class="my-4">
   <p class="lead">
+  <% if !logged_in?%>
     <%= link_to 'Sign Up', signup_path , class: 'btn btn-primary btn-lg' %>
+  <% end%>
   </p>
 </div>
