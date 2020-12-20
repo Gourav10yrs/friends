@@ -20,7 +20,7 @@
                 <%# we are passing individual article to the URL path as that path require id %>
                 <td><%= link_to 'show', article_path(article) %></td>
                 <td><%= time_ago_in_words(article.updated_at) %></td>
-                <%if logged_in? && current_user == article.user %>
+                <%if logged_in? && (current_user == article.user || current_user.admin?) %>
                     <td><%= link_to 'Edit',  edit_article_path(article) %></td>
                     <td><%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are You Sure?"} %></td>
                 <%end%>
